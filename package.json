@@ -45,6 +45,6 @@
     "vue": "^3.1.0"
   },
   "devDependencies": {
-    "@dcodegroup-au/dsg-vue": "^0.0.13-alpha.6"
+    "@dcodegroup-au/dsg-vue": "^0.0.16"
   }
 }
