@@ -1,14 +1,14 @@
 {
-  "name": "laravel-chat-vue",
+  "name": "dcode-chat-vue",
   "version": "0.0.1",
-  "description": "Frontend vue components for the laravel-chat package",
+  "description": "Frontend vue components for the dcode-chat package",
   "main": ".eslintrc.js",
   "keywords": [
     "vue",
     "tailwind",
     "dsg",
     "untitledui",
-    "laravel-chat",
+    "dcode-chat",
     "dcode"
   ],
   "scripts": {
@@ -35,16 +35,20 @@
   "exports": {
     ".": {
       "types": "./dist/main.d.ts",
-      "import": "./dist/laravel-chat.esm.js",
-      "require": "./dist/laravel-chat.cjs",
-      "default": "./dist/laravel-chat.esm.js"
+      "import": "./dist/dcode-chat.esm.js",
+      "require": "./dist/dcode-chat.cjs",
+      "default": "./dist/dcode-chat.esm.js"
     },
-    "./laravel-chat.css": "./dist/laravel-chat.css"
+    "./dcode-chat.css": "./dist/dcode-chat.css"
   },
   "peerDependencies": {
     "vue": "^3.1.0"
   },
-  "devDependencies": {
-    "@dcodegroup-au/dsg-vue": "^0.0.13-alpha.6"
+  "dependencies": {
+    "@dcodegroup-au/dsg-vue": "^0.0.13-alpha.6",
+    "axios": "^1.9.0",
+    "mitt": "^3.0.1",
+    "ziggy": "^2.4.0",
+    "ziggy-js": "^2.5.3"
   }
 }
