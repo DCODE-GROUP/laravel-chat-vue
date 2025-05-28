@@ -62,8 +62,12 @@ function updateSearch(query: string) {
       <DCodeChatSearch @searchUpdated="updateSearch" :search-route="searchRoute" />
     </div>
     <div class="dcode-chat__list">
+      <div v-if="localChats.length === 0" class="">
+            No match found.
+      </div>
+
       <div v-for="chat in localChats" :key="chat.id" class="dcode-chat__participant" @click="handleClick(chat)">
-        <DCodeChatListing :chat="chat" :class="{ 'bg-gray-100': chat.id == localCurrentChat?.id }" class="p-4 rounded-lg"/>
+        <DCodeChatListing :chat="chat" :selected="localCurrentChat?.id==chat.id" :class="{ 'bg-gray-100': chat.id == localCurrentChat?.id }" class="p-4 rounded-lg"/>
       </div>
     </div>
   </div>

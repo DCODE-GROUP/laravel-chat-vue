@@ -16,16 +16,20 @@ const message = props.message;
    <div :class="['flex mb-4', message.is_me ? 'justify-end' : 'justify-start']">
       <div
         :class="[
-          'flex items-end max-w-2xl space-x-3',
+          'flex items-top max-w-2xl space-x-3',
           message.is_me ? 'flex-row-reverse space-x-reverse' : ''
         ]"
       >
         <!-- Avatar -->
         <div
           class="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold text-white"
-          :class="message.is_me ? 'bg-gray-800' : 'bg-blue-600'"
+          :class="message.is_me ? 'bg-blue-900' : 'bg-gray-200'"
         >
-          <img
+          <div class="w-8 h-8" v-if="!message.user_attributes.user_avatar" :class="{ 'fill-white': message.is_me, 'fill-gray-300': !message.is_me }">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentFill" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+          </div>
+
+          <img v-if="message.user_attributes.user_avatar"
             :src="message.user_attributes.user_avatar + '?selected=' + (message.is_me ? 'selected' : '')"
             :alt="message.user_attributes.user_name"
             class="w-full h-full rounded-full object-cover" />

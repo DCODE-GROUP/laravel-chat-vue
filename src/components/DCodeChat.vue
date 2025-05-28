@@ -119,6 +119,11 @@ const heartbeat = async (callback?) => {
     </div>
     <div class="dcode-chat__right-column w-full h-full">
       <DCodeChatMessages :chat="currentChat" :post-url="postUrl(currentChat)" v-if="currentChat"/>
+      <div class="dcode-chat__nochat p-4 h-full" v-if="!currentChat">
+        <p >
+          Select a chat to start a conversation or view history
+        </p>
+    </div>
     </div>
   </div>
 

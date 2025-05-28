@@ -51,7 +51,11 @@ onBeforeUnmount(() => {
 watch(
   () => props.chat,
   (newChat) => {
+    if(newChat && newChat.id === localChat.value?.id) {
+      return; // No need to update if the same chat is passed
+    }
     localChat.value = newChat;
+    scrollToBottom(); 
   }
 );
 
