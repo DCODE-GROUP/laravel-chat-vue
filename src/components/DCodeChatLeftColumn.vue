@@ -7,6 +7,7 @@ import {route} from 'ziggy-js';
 
 const emit = defineEmits<{
   (e: 'selectChat', chat: Chat): void;
+  (e: 'searchUpdated', query: string): void;
 }>();
 
 // Define props
@@ -14,6 +15,7 @@ const props = defineProps<{
   chats: Chat[];
   currentChat?: Chat | null;
   loadMessagesRoute: string;
+  searchRoute?: string;
 }>();
 const localChats = ref<Chat[]>([...props.chats]);
 const localCurrentChat = ref<Chat | null>(props.currentChat);
@@ -48,12 +50,16 @@ function handleClick(chat: Chat) {
       console.error('Error loading chat messages:', error);
     });
 }
+
+function updateSearch(query: string) {
+  emit('searchUpdated', query);
+}
 </script>
 
 <template>
   <div class="min-w-64 h-full border-r border-gray-200 bg-white flex flex-col p-4">
     <div class="dcode-chat__search pb-2">
-      <DCodeChatSearch />
+      <DCodeChatSearch @searchUpdated="updateSearch" :search-route="searchRoute" />
     </div>
     <div class="dcode-chat__list">
       <div v-for="chat in localChats" :key="chat.id" class="dcode-chat__participant" @click="handleClick(chat)">
