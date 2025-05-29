@@ -50,7 +50,7 @@
     "vue": "^3.1.0"
   },
   "dependencies": {
-    "@dcodegroup-au/dsg-vue": "^0.0.13-alpha.6",
+    "@dcodegroup-au/dsg-vue": "^0.0.19",
     "axios": "^1.9.0",
     "mitt": "^3.0.1",
     "ziggy": "^2.4.0",

@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@dcodegroup-au/dsg-vue':
-        specifier: ^0.0.13-alpha.6
-        version: 0.0.13-alpha.10(vue@3.5.14(typescript@5.8.3))
+        specifier: ^0.0.19
+        version: 0.0.19(vue@3.5.14(typescript@5.8.3))
       axios:
         specifier: ^1.9.0
         version: 1.9.0
@@ -56,8 +56,8 @@ packages:
     resolution: {integrity: sha512-+EzkxvLNfiUeKMgy/3luqfsCWFRXLb7U6wNQTk60tovuckwB15B191tJWvpp4HjiQWdJkCxO3Wbvc6jlk3Xb2Q==}
     engines: {node: '>=6.9.0'}
 
-  '@dcodegroup-au/dsg-vue@0.0.13-alpha.10':
-    resolution: {integrity: sha512-0SmAWviaWP0hwgwa3mE36iJyB3H0UrokhqkyN+GiFamSxHe+zUGRHFbTdaEBNpZZnyotoi2b9HQS3Qpo/K/WLw==}
+  '@dcodegroup-au/dsg-vue@0.0.19':
+    resolution: {integrity: sha512-tCmBDnrccql7QTOqOPDvJfR6tF8mM2YHPi/bmeIM+gz497Ou/4L9Oc5a3Pxrc/C6vyDK3nrGi1h0zV2CUIa94Q==}
     engines: {node: '>=20.0.0', npm: please-use-pnpm, pnpm: '>= 9.0.0', yarn: please-use-pnpm}
     peerDependencies:
       vue: ^3.1.0
@@ -678,7 +678,7 @@ snapshots:
       '@babel/helper-string-parser': 7.27.1
       '@babel/helper-validator-identifier': 7.27.1
 
-  '@dcodegroup-au/dsg-vue@0.0.13-alpha.10(vue@3.5.14(typescript@5.8.3))':
+  '@dcodegroup-au/dsg-vue@0.0.19(vue@3.5.14(typescript@5.8.3))':
     dependencies:
       vue: 3.5.14(typescript@5.8.3)
 
