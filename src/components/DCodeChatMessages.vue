@@ -69,6 +69,15 @@ watch(
 // Function to add a new message to the chat
 function addNewMessage(message: Message) {
   if (!localChat.value) return;
+
+  // Check if the message already exists in the chat
+  const existingMessage = localChat.value.messages.find(m => m.id === message.id);
+  if (existingMessage) {
+    // If the message already exists, update it
+    Object.assign(existingMessage, message);
+    return;
+  }
+
   localChat.value.messages.push(message);
   scrollToBottom();
 }

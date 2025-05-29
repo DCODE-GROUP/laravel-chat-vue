@@ -40,7 +40,6 @@ watch(
 
 // Function to send a message
 function sendMessage() {
-  debugger;
   if (!localChat) return;
 
   axios.post(postUrl.value, {
