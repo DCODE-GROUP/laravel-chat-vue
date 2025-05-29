@@ -1,4 +1,4 @@
-interface User {
+export interface User {
   id: number;
   name: string;
   email: string;
@@ -7,15 +7,16 @@ interface User {
   updated_at: string; 
 }
 
-interface Message {
+export interface Message {
   id: string;
   chat_id: string;
   user_id: number;
-  content: string;
+  message: string;
   created_at: string;
   updated_at: string;
   deleted_at: string | null;
   user: User,
+  is_me: boolean,
   user_attributes: {
     chat_avatar: string | null;
     chat_title: string | null;
@@ -25,7 +26,7 @@ interface Message {
   }
 }
 
-interface Chat {
+export interface Chat {
   id: string;
   chatable_type: string | null;
   chatable_id: number | null;
@@ -35,7 +36,7 @@ interface Chat {
   created_at: string;
   updated_at: string;
   deleted_at: string | null;
-  messages: Message[] | [];
+  messages: Message[];
   pivot: {
     user_id: number;
     chat_id: string;

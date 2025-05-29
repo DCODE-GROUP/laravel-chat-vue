@@ -8,7 +8,6 @@ import { ref } from 'vue';
 import type { Chat } from './types';
 import { provide } from 'vue';
 import mitt from 'mitt';
-import { use } from 'react';
 
 defineOptions({
   name: "DCodeChat",
@@ -31,7 +30,7 @@ const props = withDefaults(defineProps<{
   useHeartbeat: true 
 });
 const localChats = ref<Chat[]>([...props.chats]);
-const initialChatId = ref<Chat | null>(props.initialChatId || null);
+const initialChatId = ref(props.initialChatId || null);
 const currentChat = ref<Chat | null>(null);
 // If the hosting page doesn't want to use heartbeat, it can set useHeartbeat to false and provide props updates
 // via websockets or other means.

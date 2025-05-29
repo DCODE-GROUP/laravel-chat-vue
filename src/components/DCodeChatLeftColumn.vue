@@ -4,6 +4,7 @@ import DCodeChatListing from './DCodeChatListing.vue';
 import { ref, watch } from 'vue';
 import axios from 'axios';
 import {route} from 'ziggy-js';
+import type { Chat } from './types';
 
 const emit = defineEmits<{
   (e: 'selectChat', chat: Chat): void;

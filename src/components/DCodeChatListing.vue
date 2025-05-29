@@ -31,7 +31,7 @@ defineProps<{
                 {{ chat?.pivot?.chat_title }}
             </div>
             <div class="text-sm text-gray-500">
-                {{  chat?.pivot?.chat_subtitle }}
+                {{  chat?.pivot?.chat_description }}
             </div>
         </div>
     </div>  

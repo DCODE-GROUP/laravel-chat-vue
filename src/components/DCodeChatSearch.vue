@@ -1,12 +1,6 @@
 <script lang="ts" setup>
-import axios from 'axios';
-import { route } from 'ziggy-js';
-import { onMounted } from 'vue';
+import { defineOptions, defineEmits, defineProps, withDefaults } from 'vue';
 import { ref } from 'vue';
-import type { Chat } from './types';
-import { provide } from 'vue';
-import mitt from 'mitt';
-
 defineOptions({
   name: "DCodeChatSearch",
 });
@@ -14,6 +8,8 @@ defineOptions({
 const emit = defineEmits<{
   (e: 'searchUpdated', query: string): void;
 }>();
+
+const currentQuery = ref(''); // Reactive variable to hold the search query
 
 // Define props
 const props = withDefaults(defineProps<{
@@ -23,8 +19,8 @@ const props = withDefaults(defineProps<{
 });
 
 // Define the search function
-const performSearch = (query: string) => {
-  emit('searchUpdated', query);
+const performSearch = () => {
+  emit('searchUpdated', currentQuery.value);
 };
 </script>
 
@@ -34,8 +30,9 @@ const performSearch = (query: string) => {
     <path fill-rule="evenodd" d="M12.9 14.32a8 8 0 111.414-1.414l4.387 4.387a1 1 0 01-1.414 1.414l-4.387-4.387zM14 8a6 6 0 11-12 0 6 6 0 0112 0z" clip-rule="evenodd" />
   </svg>
   <input
-    @keyup.enter="performSearch($event.target.value)"
+    @keyup.enter="performSearch"
     type="text"
+    v-model="currentQuery" 
     placeholder="Search chats"
     class="ml-2 w-full outline-none bg-transparent text-gray-600 placeholder-gray-400"
   />

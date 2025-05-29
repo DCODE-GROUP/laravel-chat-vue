@@ -2,7 +2,9 @@
   "name": "@dcodegroup-au/dcode-chat-vue",
   "version": "0.0.4",
   "description": "Frontend vue components for the dcode-chat package",
-  "main": ".eslintrc.js",
+  "main": ".dist/dcode-chat-vue.umd.js",
+  "module": "./dist/dcode-chat-vue.es.js",
+  "types": "./dist/index.d.ts",
   "keywords": [
     "vue",
     "tailwind",
@@ -11,13 +13,16 @@
     "dcode-chat",
     "dcode"
   ],
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
+  
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "preinstall": "npx only-allow pnpm",
     "preupdate": "npx --yes only-allow pnpm",
     "dev": "vite",
-    "build": "vite build",
+    "build": "vue-tsc --declaration --emitDeclarationOnly && vite build",
     "watch": "vite build --watch",
     "serve": "vite preview",
     "lint": "eslint --flag unstable_ts_config src/",
@@ -35,12 +40,11 @@
   },
   "exports": {
     ".": {
-      "types": "./dist/main.d.ts",
-      "import": "./dist/dcode-chat.esm.js",
-      "require": "./dist/dcode-chat.cjs",
-      "default": "./dist/dcode-chat.esm.js"
-    },
-    "./dcode-chat.css": "./dist/dcode-chat.css"
+      "import": "./dist/dcode-chat-vue.es.js",
+      "require": "./dist/dcode-chat-vue.umd.js",
+      "default": "./dist/dcode-chat-vue.es.js",
+      "types": "./dist/index.d.ts"
+    }
   },
   "peerDependencies": {
     "vue": "^3.1.0"
@@ -54,6 +58,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.2.4",
-    "vite": "^6.3.5"
+    "vite": "^6.3.5",
+    "vue-tsc": "^2.2.10"
   }
 }

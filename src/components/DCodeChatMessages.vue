@@ -2,10 +2,18 @@
 import DCodeChatPost from "./DCodeChatPost.vue";
 import DCodeChatMessage from "./DCodeChatMessage.vue";
 import { defineProps } from 'vue';
-import type { Chat } from './types';
+import type { Chat, Message } from './types';
 import { ref, watch } from 'vue';
 import DCodeChatListing from "./DCodeChatListing.vue";
 import { inject, onMounted, onBeforeUnmount } from 'vue';
+import mitt, { Emitter } from 'mitt'
+import type { Ref } from 'vue';
+
+type Events = {
+  'new-messages': { chat: Chat; messages: Message[] };
+};
+
+type LocalEmitter = Emitter<Events>
 
 defineOptions({
   name: "DCodeChatMessages"
@@ -15,10 +23,11 @@ const props = defineProps<{
   chat: Chat | null;
   postUrl: string;
 }>();
-const localChat = ref<Chat | null>(props.chat);
+const localChat = ref<Chat | null>(props.chat ?? null) as Ref<Chat | null>;
+
 const postUrl = ref<string>(props.postUrl);
 
-const emitter = inject('localEmitter');
+const emitter = inject<LocalEmitter>('localEmitter');
 const chatContainer = ref(null);
 
 function handleEvent(payload) {
@@ -71,7 +80,7 @@ function addNewMessage(message: Message) {
   if (!localChat.value) return;
 
   // Check if the message already exists in the chat
-  const existingMessage = localChat.value.messages.find(m => m.id === message.id);
+  const existingMessage = localChat.value?.messages.find(m => m.id === message.id);
   if (existingMessage) {
     // If the message already exists, update it
     Object.assign(existingMessage, message);

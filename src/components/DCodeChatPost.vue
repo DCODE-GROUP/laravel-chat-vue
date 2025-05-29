@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { Chat } from './types';
+import type { Chat, Message } from './types';
 import axios from 'axios';
 import { watch, ref } from 'vue';
 
