@@ -10,7 +10,7 @@ export default defineConfig({
     lib: {
       // Entry point of your component library
       entry: path.resolve(__dirname, 'src/index.ts'), // or index.ts
-      name: 'dcode-chat-vue',
+      name: '@dcodegroup-au/dcode-chat-vue',
       fileName: (format) => `dcode-chat-vue.${format}.js`,
       formats: ['es', 'umd']
     },

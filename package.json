@@ -1,6 +1,6 @@
 {
   "name": "@dcodegroup-au/dcode-chat-vue",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Frontend vue components for the dcode-chat package",
   "main": ".eslintrc.js",
   "keywords": [
@@ -11,6 +11,7 @@
     "dcode-chat",
     "dcode"
   ],
+  "files": ["dist"],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "preinstall": "npx only-allow pnpm",
@@ -46,13 +47,13 @@
   },
   "dependencies": {
     "@dcodegroup-au/dsg-vue": "^0.0.13-alpha.6",
-    "@vitejs/plugin-vue": "^5.2.4",
     "axios": "^1.9.0",
     "mitt": "^3.0.1",
     "ziggy": "^2.4.0",
     "ziggy-js": "^2.5.3"
   },
   "devDependencies": {
+    "@vitejs/plugin-vue": "^5.2.4",
     "vite": "^6.3.5"
   }
 }
