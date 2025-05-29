@@ -1,6 +1,6 @@
 {
   "name": "dcode-chat-vue",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Frontend vue components for the dcode-chat package",
   "main": ".eslintrc.js",
   "keywords": [
