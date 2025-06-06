@@ -1,6 +1,6 @@
 {
   "name": "@dcodegroup-au/dcode-chat-vue",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Frontend vue components for the dcode-laravel-chat package",
   "main": ".dist/dcode-chat-vue.umd.js",
   "module": "./dist/dcode-chat-vue.es.js",
