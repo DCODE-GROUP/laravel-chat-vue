@@ -11,12 +11,9 @@ importers:
 
   .:
     dependencies:
-      '@dcodegroup-au/dcode-chat-vue':
-        specifier: 'link:'
-        version: 'link:'
       '@dcodegroup-au/dsg-vue':
-        specifier: ^0.0.13-alpha.6
-        version: 0.0.13-alpha.10(vue@3.5.14(typescript@5.8.3))
+        specifier: ^0.0.20
+        version: 0.0.20(vue@3.5.14(typescript@5.8.3))
       axios:
         specifier: ^1.9.0
         version: 1.9.0
@@ -68,8 +65,8 @@ packages:
     resolution: {integrity: sha512-+EzkxvLNfiUeKMgy/3luqfsCWFRXLb7U6wNQTk60tovuckwB15B191tJWvpp4HjiQWdJkCxO3Wbvc6jlk3Xb2Q==}
     engines: {node: '>=6.9.0'}
 
-  '@dcodegroup-au/dsg-vue@0.0.13-alpha.10':
-    resolution: {integrity: sha512-0SmAWviaWP0hwgwa3mE36iJyB3H0UrokhqkyN+GiFamSxHe+zUGRHFbTdaEBNpZZnyotoi2b9HQS3Qpo/K/WLw==}
+  '@dcodegroup-au/dsg-vue@0.0.20':
+    resolution: {integrity: sha512-Ra0a2uOriCfqHEM6wK4F6t+k9a9aQPQ5q4My+sudZpa5FgPT9mGE2E76fy2lm4FK6vpAyxp8hATZ+nEubknzcg==}
     engines: {node: '>=20.0.0', npm: please-use-pnpm, pnpm: '>= 9.0.0', yarn: please-use-pnpm}
     peerDependencies:
       vue: ^3.1.0
@@ -749,7 +746,7 @@ snapshots:
       '@babel/helper-string-parser': 7.27.1
       '@babel/helper-validator-identifier': 7.27.1
 
-  '@dcodegroup-au/dsg-vue@0.0.13-alpha.10(vue@3.5.14(typescript@5.8.3))':
+  '@dcodegroup-au/dsg-vue@0.0.20(vue@3.5.14(typescript@5.8.3))':
     dependencies:
       vue: 3.5.14(typescript@5.8.3)
 
