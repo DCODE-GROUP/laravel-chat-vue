@@ -1,6 +1,8 @@
 <script lang="ts" setup>
 import { defineOptions, defineEmits, defineProps, withDefaults } from 'vue';
 import { ref } from 'vue';
+import { watch } from 'vue';
+
 defineOptions({
   name: "DCodeChatSearch",
 });
@@ -9,14 +11,19 @@ const emit = defineEmits<{
   (e: 'searchUpdated', query: string): void;
 }>();
 
-const currentQuery = ref(''); // Reactive variable to hold the search query
-
-// Define props
 const props = withDefaults(defineProps<{
-  searchRoute?: string; // Optional search route
+  currentSearch?: string;
 }>(), {
-  searchRoute: () => 'dcode-chat.search.index' // Default value
+  currentSearch: ''
 });
+const currentQuery = ref(props.currentSearch || '');
+
+watch(
+  () => props.currentSearch,
+  (newSearch) => {
+    currentQuery.value = newSearch;
+  }
+);
 
 // Define the search function
 const performSearch = () => {

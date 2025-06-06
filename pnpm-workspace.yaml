@@ -1,2 +1,4 @@
 ignoredBuiltDependencies:
   - '@dcodegroup-au/dsg-vue'
+overrides:
+  '@dcodegroup-au/dcode-chat-vue': 'link:'

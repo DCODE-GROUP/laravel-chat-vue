@@ -8,6 +8,8 @@ import DCodeChatListing from "./DCodeChatListing.vue";
 import { inject, onMounted, onBeforeUnmount } from 'vue';
 import mitt, { Emitter } from 'mitt'
 import type { Ref } from 'vue';
+import axios from 'axios';
+import {route} from 'ziggy-js';
 
 type Events = {
   'new-messages': { chat: Chat; messages: Message[] };
@@ -22,9 +24,10 @@ defineOptions({
 const props = defineProps<{
   chat: Chat | null;
   postUrl: string;
+  userId?: string | null;
+  loadMessagesRoute: string;
 }>();
 const localChat = ref<Chat | null>(props.chat ?? null) as Ref<Chat | null>;
-
 const postUrl = ref<string>(props.postUrl);
 
 const emitter = inject<LocalEmitter>('localEmitter');
@@ -89,6 +92,12 @@ function addNewMessage(message: Message) {
 
   localChat.value.messages.push(message);
   scrollToBottom();
+  loadMessages(); // Load messages after adding a new one to mark as read
+}
+
+function loadMessages(){
+  let messagesUrl = route(props.loadMessagesRoute, { chat: localChat.value.id }) + '?markAsRead=true';
+    axios.get(messagesUrl);
 }
 
 
@@ -105,7 +114,7 @@ function addNewMessage(message: Message) {
         No messages yet. Start the conversation!
       </div>
       <div v-for="message in localChat?.messages" :key="message.id" class="mb-4 w-full" >
-        <DCodeChatMessage :message="message" />        
+        <DCodeChatMessage :message="message" :user-id="userId" />        
       </div>
     </div>
     <div class="m-4">

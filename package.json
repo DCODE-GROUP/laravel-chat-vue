@@ -1,7 +1,7 @@
 {
   "name": "@dcodegroup-au/dcode-chat-vue",
   "version": "0.0.5",
-  "description": "Frontend vue components for the dcode-chat package",
+  "description": "Frontend vue components for the dcode-laravel-chat package",
   "main": ".dist/dcode-chat-vue.umd.js",
   "module": "./dist/dcode-chat-vue.es.js",
   "types": "./dist/index.d.ts",
@@ -16,7 +16,6 @@
   "files": [
     "dist"
   ],
-  
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "preinstall": "npx only-allow pnpm",
@@ -52,7 +51,9 @@
   "dependencies": {
     "@dcodegroup-au/dsg-vue": "^0.0.13-alpha.6",
     "axios": "^1.9.0",
+    "laravel-echo": "^2.1.4",
     "mitt": "^3.0.1",
+    "pusher-js": "^8.4.0",
     "ziggy": "^2.4.0",
     "ziggy-js": "^2.5.3"
   },

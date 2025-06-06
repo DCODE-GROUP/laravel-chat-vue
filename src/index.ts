@@ -6,4 +6,5 @@ export {
   DCodeChatMessages,
   DCodeChatPost,
   DCodeChatSearch,
+  DCodeChatMonitor
 } from './components/';

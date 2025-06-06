@@ -15,16 +15,25 @@ const emit = defineEmits<{
 const props = defineProps<{
   chats: Chat[];
   currentChat?: Chat | null;
+  currentSearch?: string;
   loadMessagesRoute: string;
-  searchRoute?: string;
 }>();
 const localChats = ref<Chat[]>([...props.chats]);
 const localCurrentChat = ref<Chat | null>(props.currentChat);
+const localCurrentSearch = ref(props.currentSearch || '');
+
+watch(
+  () => props.currentSearch,
+  (newCurrentSearch) => {
+    localCurrentSearch.value = newCurrentSearch;
+  }
+);
 
 watch(
   () => props.currentChat,
   (newCurrentChat) => {
     localCurrentChat.value = newCurrentChat;
+    sendChatSelectedEvent(newCurrentChat);
   }
 );
 
@@ -35,17 +44,24 @@ watch(
   }
 );
 
+function sendChatSelectedEvent(chat?: Chat) {
+  emit('selectChat', chat);
+  const chatSelectedEvent = new CustomEvent('dcodechat-chat-selected', {
+    detail: {
+      chat: chat
+    }
+  });
+  document.dispatchEvent(chatSelectedEvent);
+}
+
 function handleClick(chat: Chat) {
   // Load the chat messages with axios
   let messagesUrl = route(props.loadMessagesRoute, { chat: chat.id }) + '?markAsRead=true';
   axios.get(messagesUrl)
     .then(response => {
-      // Assuming the response contains the chat messages
-      // Set this chat as the selected chat and unselect others
       localCurrentChat.value = chat;
       chat = response.data.chat || [];
-      // Emit the selectChat event with the clicked chat
-      emit('selectChat', chat);
+      sendChatSelectedEvent(chat);
     })
     .catch(error => {
       console.error('Error loading chat messages:', error);
@@ -58,17 +74,17 @@ function updateSearch(query: string) {
 </script>
 
 <template>
-  <div class="min-w-64 h-full border-r border-gray-200 bg-white flex flex-col p-4">
+  <div class="dcode-chat__left-column-inner min-w-64 h-full border-r border-gray-200 bg-white flex flex-col p-4">
     <div class="dcode-chat__search pb-2">
-      <DCodeChatSearch @searchUpdated="updateSearch" :search-route="searchRoute" />
+      <DCodeChatSearch @searchUpdated="updateSearch" :current-search="localCurrentSearch"/>
     </div>
-    <div class="dcode-chat__list">
+    <div class="dcode-chat__list overflow-y-auto flex-1">
       <div v-if="localChats.length === 0" class="">
             No match found.
       </div>
 
       <div v-for="chat in localChats" :key="chat.id" class="dcode-chat__participant" @click="handleClick(chat)">
-        <DCodeChatListing :chat="chat" :selected="localCurrentChat?.id==chat.id" :class="{ 'bg-gray-100': chat.id == localCurrentChat?.id }" class="p-4 rounded-lg"/>
+        <DCodeChatListing :load-messages-route="loadMessagesRoute" :chat="chat" :selected="localCurrentChat?.id==chat.id" :class="{ 'bg-gray-100': chat.id == localCurrentChat?.id }" class="p-4 rounded-lg"/>
       </div>
     </div>
   </div>

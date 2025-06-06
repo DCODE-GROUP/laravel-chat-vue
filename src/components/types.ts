@@ -1,3 +1,9 @@
+declare global {
+  interface Window {
+    Pusher: any;
+  }
+}
+
 export interface User {
   id: number;
   name: string;
